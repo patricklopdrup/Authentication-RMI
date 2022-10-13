@@ -23,4 +23,8 @@ public class Printer {
         }
     }
 
+    public int getCurrentJobId() {
+        return _currentJobId;
+    }
+
 }

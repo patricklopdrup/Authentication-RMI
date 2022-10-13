@@ -11,6 +11,6 @@ public class PrinterJob {
 
     @Override
     public String toString() {
-        return jobId + " " + filename;
+        return (jobId + 1) + " " + filename;
     }
 }
