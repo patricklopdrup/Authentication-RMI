@@ -14,11 +14,11 @@ public class PrinterTest {
     // To test System.out.println method
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-    Printer printer;
+    private Printer _printer;
 
     @BeforeEach
     public void setUpStreams() {
-        printer = new Printer();
+        _printer = new Printer();
         System.setOut(new PrintStream(outContent));
     }
 
@@ -28,33 +28,47 @@ public class PrinterTest {
     }
 
     @Test
-    void get_currentJobIdEqualOne_whenOneFileAdded() {
-        String filename = "file1";
-        printer.addToQueue(filename);
-        assert(printer.getCurrentJobId() == 1);
-    }
-
-    @Test
     void print_filenameFromQueue_whenAdded() {
         String filename = "file1";
-        printer.addToQueue(filename);
-        printer.printQueue();
-        assertEquals("1 file1\r\n", outContent.toString());
+        _printer.addToQueue(filename);
+        _printer.printQueue();
+        assertEquals("0 file1\r\n", outContent.toString());
     }
 
     @Test
     void print_multipleFilenamesFromQueue_whenAdded() {
         String[] filenames = { "file1", "file2", "file3" };
-        for (String filename: filenames) {
-            printer.addToQueue(filename);
-        }
-        printer.printQueue();
+        _printer.addToQueue(filenames);
+        _printer.printQueue();
         // Maybe fails if not run on Windows?
         String expected =
-                "1 file1\r\n" +
-                "2 file2\r\n" +
-                "3 file3\r\n";
+                "0 file1\r\n" +
+                "1 file2\r\n" +
+                "2 file3\r\n";
         assertEquals(expected, outContent.toString());
+    }
+
+    @Test
+    void print_multipleFilenamesFromQueue_afterMoveToTop() {
+        String[] filenames = { "file1", "file2", "file3" };
+        _printer.addToQueue(filenames);
+        int jobIdOfFile2 = 1;
+        _printer.moveJobToTopOfQueue(jobIdOfFile2);
+        _printer.printQueue();
+        String expected =
+                "0 file2\r\n" + // file2 in first place
+                "1 file1\r\n" +
+                "2 file3\r\n";
+        assertEquals(expected, outContent.toString());
+    }
+
+    @Test
+    void move_jobToTopInQueue() {
+        String[] filenames = { "file1", "file2", "file3" };
+        _printer.addToQueue(filenames);
+        int jobIdOfFile2 = 1;
+        _printer.moveJobToTopOfQueue(jobIdOfFile2);
+        assertEquals("file2", _printer.getTopOfQueue());
     }
 
 }

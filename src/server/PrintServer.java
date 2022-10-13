@@ -32,8 +32,12 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
     }
 
     @Override
-    public void topQueue(String printer, int job) {
+    public void topQueue(String printer, int job) throws RemoteException {
+        Printer _printer = _printers.get(printer);
 
+        if (_printer != null) {
+            _printer.moveJobToTopOfQueue(job);
+        }
     }
 
     @Override
