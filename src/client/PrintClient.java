@@ -2,6 +2,7 @@ package client;
 
 import com.company.Main;
 import server.IPrintServer;
+import server.PrintServer;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -12,7 +13,7 @@ import java.util.Scanner;
 
 public class PrintClient {
     public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
-        IPrintServer printServer = (IPrintServer) Naming.lookup("rmi://localhost:5099/getPrinterServer");
+        IPrintServer printServer = new PrintServer();
 
         Scanner _scanner = new Scanner(System.in);
         boolean shouldExit = false;
@@ -20,7 +21,7 @@ public class PrintClient {
             printOptions();
             System.out.print("> ");
             String _input = _scanner.nextLine();
-            if (!isInputLegal()) {
+            if (!isInputLegal(printServer, _input)) {
                 System.out.println("Input not legal. Try again.");
                 continue;
             }
@@ -31,9 +32,13 @@ public class PrintClient {
             switch (_type) {
                 case "exit":
                     shouldExit = true;
+                    System.out.println("Exiting program...");
                     break;
                 case "start":
-                    Main main = new Main();
+                    printServer = printServer.start();
+                    break;
+                case "stop":
+                    printServer.stop();
                     break;
                 case "print":
                 case "p":
@@ -50,13 +55,16 @@ public class PrintClient {
         }
     }
 
-    private static boolean isInputLegal() {
+    private static boolean isInputLegal(IPrintServer printServer, String input) {
+        String[] _inputSplit = input.split(" ");
+        if (printServer == null && !_inputSplit[0].equals("start"))
+            return false;
         return true;
     }
 
     private static void printOptions() {
         System.out.println(
-                "Options:\n" +
+                "\nOptions:\n" +
                 "P <filename> <printer>\tQ <printer>"
         );
     }

@@ -1,7 +1,11 @@
 package server;
 
+import com.company.Main;
 import printer.Printer;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
@@ -50,13 +54,24 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
     }
 
     @Override
-    public void start() {
-
+    public IPrintServer start() throws RemoteException {
+        String[] _args = { "start" };
+        Main.main(_args);
+        try {
+            IPrintServer printServer = (IPrintServer) Naming.lookup("rmi://localhost:5099/getPrinterServer");
+            System.out.println("PrintServer is started!");
+            return printServer;
+        } catch (Exception e) {
+            System.out.println("Print server could not be started: " + e.getMessage());
+        }
+        return null;
     }
 
     @Override
-    public void stop() {
-
+    public void stop() throws RemoteException {
+        String[] _args = { "stop" };
+        Main.main(_args);
+        System.out.println("PrintServer stopping...");
     }
 
     @Override
