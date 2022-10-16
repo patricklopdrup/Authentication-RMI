@@ -19,7 +19,16 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
         if (_printer != null) {
             _printer.addToQueue(filename);
+        } else {
+            Printer _newPrinter = addNewPrinter(printer);
+            _newPrinter.addToQueue(filename);
         }
+    }
+
+    private Printer addNewPrinter(String printer) {
+        Printer _printerObj = new Printer();
+        _printers.put(printer, _printerObj);
+        return _printerObj;
     }
 
     @Override
