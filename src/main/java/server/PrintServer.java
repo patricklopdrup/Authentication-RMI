@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 public class PrintServer extends UnicastRemoteObject implements IPrintServer {
     private HashMap<String, Printer> _printers = new HashMap<String, Printer>();
+    private HashMap<String, String> _config = new HashMap<>();
 
     public PrintServer() throws RemoteException {
         super();
@@ -91,11 +92,16 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
     @Override
     public void readConfig(String parameter) {
-
+        String value = _config.getOrDefault(parameter, null);
+        if (value == null)
+            System.out.println("Parameter not found.");
+        else
+            System.out.println(parameter + ": " + value);
     }
 
     @Override
     public void setConfig(String parameter, String value) {
-
+        _config.put(parameter, value);
     }
+
 }

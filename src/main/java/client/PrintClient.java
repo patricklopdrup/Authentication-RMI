@@ -32,19 +32,32 @@ public class PrintClient {
                     shouldExit = true;
                     System.out.println("Exiting program...");
                     break;
-                case "start":
+                case "s":
                     printServer = printServer.start();
                     break;
-                case "stop":
+                case "q":
                     printServer.stop();
                     break;
-                case "print":
+                case "r":
+                    printServer.restart();
+                    break;
                 case "p":
                     printServer.print(_arg[0], _arg[1]);
                     break;
-                case "queue":
-                case "q":
+                case "pq":
                     printServer.queue(_arg[0]);
+                    break;
+                case "PT":
+                    printServer.topQueue(_arg[0], Integer.parseInt(_arg[1]));
+                    break;
+                case "ps":
+                    printServer.status(_arg[0]);
+                    break;
+                case "cr":
+                    printServer.readConfig(_arg[0]);
+                    break;
+                case "cs":
+                    printServer.setConfig(_arg[0], _arg[1]);
                     break;
             }
 
