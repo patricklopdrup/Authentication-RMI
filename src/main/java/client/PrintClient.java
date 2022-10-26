@@ -18,6 +18,7 @@ public class PrintClient {
             printOptions();
             System.out.print("> ");
             String _input = _scanner.nextLine();
+
             if (!isInputLegal(printServer, _input)) {
                 System.out.println("Input not legal. Try again.");
                 continue;
@@ -62,7 +63,19 @@ public class PrintClient {
     private static void printOptions() {
         System.out.println(
                 "\nOptions:\n" +
-                "P <filename> <printer>\tQ <printer>"
+
+                "> Print Service:\n" +
+                "\tS: Start\tQ: Stop\t\tR: Restart\n" +
+
+                "> Printing:\n" +
+                "\tP <filename> <printer>\t:\tPrint new job\n" +
+                "\tPQ <printer>\t\t\t:\tPrint queue of printer\n" +
+                "\tPT <printer> <jobId>\t:\tSend job to top of queue\n" +
+                "\tPS <printer>\t\t\t:\tPrint status of printer:\n" +
+
+                "> Config:\n" +
+                "\tCR <parameter>\t\t\t:\tRead the parameter from config\n" +
+                "\tCS <parameter> <value>\t:\tSet the parameter in config\n"
         );
     }
 }
