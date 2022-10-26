@@ -75,13 +75,18 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
     }
 
     @Override
-    public void restart() {
-
+    public void restart() throws RemoteException {
+        stop();
+        System.out.println("Clearing Print Queue...");
+        _printers.clear();
+        start();
     }
+
 
     @Override
     public void status(String printer) {
-
+        Printer _printer = _printers.get(printer);
+        _printer.printStatus();
     }
 
     @Override

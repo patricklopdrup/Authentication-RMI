@@ -71,4 +71,28 @@ public class PrinterTest {
         assertEquals("file2", _printer.getTopOfQueue());
     }
 
+    @Test
+    void print_statusOfPrinterWithMultipleJobs() {
+        String[] filenames = { "file1", "file2", "file3" };
+        _printer.addToQueue(filenames);
+        _printer.printStatus();
+        String content = outContent.toString();
+        assert(
+                content.contains("Printer has 3 job(s)")
+                && content.contains("file1")
+                && content.contains("file2")
+                && content.contains("file3")
+        );
+    }
+
+    @Test
+    void print_statusOfPrinterWithNoJobs() {
+        _printer.printStatus();
+        String content = outContent.toString();
+        assert(
+                content.contains("Printer has 0 job(s)")
+                && !content.contains("Printing the job(s) now:")
+        );
+    }
+
 }

@@ -51,4 +51,13 @@ public class Printer {
         return "";
     }
 
+    public void printStatus() {
+        int jobCount = _printQueue.size();
+        System.out.println("Printer has " + jobCount + " job(s).");
+        if (jobCount > 0) {
+            System.out.println("\nPrinting the job(s) now:");
+            printQueue();
+        }
+    }
+
 }
