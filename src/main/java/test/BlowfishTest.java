@@ -19,7 +19,8 @@ public class BlowfishTest {
 
     @Test
     void make_twoHashesFromSamePassword_getDifferentHashes() {
-        String password = "Secure_pass123";
+
+        String password = "Se@cu@re_!p!ass1*2)3";
         String hash1 = blowfish.getHash(password);
         String hash2 = blowfish.getHash(password);
 
