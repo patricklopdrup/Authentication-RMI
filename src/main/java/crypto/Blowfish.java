@@ -16,7 +16,7 @@ public class Blowfish implements ICrypto {
                     "src/main/java/crypto/credentials.txt"));
             String line = reader.readLine();
             while (line != null) {
-                System.out.println(line);
+//                System.out.println(line);
                 String[] parts = line.split(":");
                 credentials.put(parts[0],parts[1]);
                 // read next line
@@ -26,12 +26,12 @@ public class Blowfish implements ICrypto {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Printing hashmap");
-
-        for (Object objectName : credentials.keySet()) {
-            System.out.println(objectName);
-            System.out.println(credentials.get(objectName));
-        }
+//        System.out.println("Printing hashmap");
+//
+//        for (Object objectName : credentials.keySet()) {
+//            System.out.println(objectName);
+//            System.out.println(credentials.get(objectName));
+//        }
         return credentials;
     }
     public String getHash(String password) {

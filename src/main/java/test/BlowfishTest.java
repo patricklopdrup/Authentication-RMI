@@ -16,12 +16,13 @@ public class BlowfishTest {
     void setUp() {
         blowfish = new Blowfish();
     }
-
+//    l s223300 Se@cu@re_!p!ass1*2)3
     @Test
     void make_twoHashesFromSamePassword_getDifferentHashes() {
 
-        String password = "Se@cu@re_!p!ass1*2)3";
+        String password = "password";
         String hash1 = blowfish.getHash(password);
+        System.out.println(hash1);
         String hash2 = blowfish.getHash(password);
 
         assertNotEquals(hash1, hash2);

@@ -1,0 +1,62 @@
+s223300: Printing file
+Sat Oct 29 16:47:31 CEST 2022
+helloworld
+printer1
+========**========
+: Starting the server
+Sat Oct 29 16:52:18 CEST 2022
+========**========
+: Stopping the server
+Sat Oct 29 16:52:53 CEST 2022
+========**========
+: Starting the server
+Sat Oct 29 16:53:03 CEST 2022
+========**========
+: Starting the server
+Sat Oct 29 16:53:13 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:53:22 CEST 2022
+========**========
+s223300: Successfully logged in
+Sat Oct 29 16:53:22 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:53:39 CEST 2022
+========**========
+s223300: Invalid Credentials
+Sat Oct 29 16:53:39 CEST 2022
+========**========
+: Starting the server
+Sat Oct 29 16:56:00 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:56:06 CEST 2022
+========**========
+s223300: Invalid Credentials
+Sat Oct 29 16:56:06 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:56:16 CEST 2022
+========**========
+s223300: Successfully logged in
+Sat Oct 29 16:56:16 CEST 2022
+========**========
+: Starting the server
+Sat Oct 29 16:58:05 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:58:22 CEST 2022
+========**========
+s223300: Invalid Credentials
+Sat Oct 29 16:58:22 CEST 2022
+========**========
+: Starting the server
+Sat Oct 29 16:59:03 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:59:06 CEST 2022
+========**========
+s223300: Invalid Credentials
+Sat Oct 29 16:59:06 CEST 2022
+========**========
