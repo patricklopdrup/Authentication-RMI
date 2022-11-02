@@ -36,7 +36,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
             writer.println(entity);
         }
 
-        if (!action.matches("Attempted login|Successfully logged in|Starting the server") ) {
+        if (!action.matches("Attempted login|Successfully logged in|Starting the server|Invalid Credentials") ) {
             if (!session.checkSessionForUser(username)) {
                 writer.println("Invalid/Non-Existent Session");
                 throw new RemoteException("Invalid/Non-Existent Session");

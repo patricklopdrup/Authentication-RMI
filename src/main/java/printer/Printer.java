@@ -55,7 +55,7 @@ public class Printer {
         int jobCount = _printQueue.size();
         System.out.println("Printer has " + jobCount + " job(s).");
         if (jobCount > 0) {
-            System.out.println("\nPrinting the job(s) now:");
+            System.out.println("\nThe jobs are:");
             printQueue();
         }
     }

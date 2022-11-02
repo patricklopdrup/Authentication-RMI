@@ -22,7 +22,6 @@ public class BlowfishTest {
 
         String password = "password";
         String hash1 = blowfish.getHash(password);
-        System.out.println(hash1);
         String hash2 = blowfish.getHash(password);
 
         assertNotEquals(hash1, hash2);

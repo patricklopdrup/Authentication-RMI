@@ -21,6 +21,24 @@ public class PrintClient {
         Date _sessionToken = null;
         boolean _isLoggedIn = false;
         String _username = "";
+        String _password = "";
+
+        while (true) {
+            System.out.println("\nLogin to use the Print server");
+            System.out.print("Username: ");
+            _username = _scanner.nextLine();
+            System.out.print("Password: ");
+            _password = _scanner.nextLine();
+
+            _sessionToken = printServer.login(_username, _password);
+            if (_sessionToken != null) {
+                _isLoggedIn = true;
+                printServer = printServer.start(_username);
+                _isPrintServerStarted = true;
+                break;
+            }
+        }
+
         while (true) {
             printOptions();
             System.out.print("> ");
@@ -29,18 +47,12 @@ public class PrintClient {
             String[] _inputSplit = _input.toLowerCase().split(" ");
             String _type = _inputSplit[0];
             String[] _arg = Arrays.copyOfRange(_inputSplit, 1, _inputSplit.length);
-            if (!isInputLegal(_isPrintServerStarted, _input, printServer, _username)) {
-                System.out.println("Input not legal. Try again.");
+            if (!isInputLegal(_isPrintServerStarted, _input)) {
+                System.out.println("Print server is not started!");
                 continue;
             }
             try {
                 switch (_type) {
-                    case "login":
-                    case "l":
-                        _sessionToken = printServer.login(_arg[0], _arg[1]);
-                        _isLoggedIn = true;
-                        _username = _arg[0];
-                        break;
                     case "exit":
                         shouldExit = true;
                         System.out.println("Exiting program...");
@@ -62,7 +74,7 @@ public class PrintClient {
                     case "pq":
                         printServer.queue(_username, _arg[0]);
                         break;
-                    case "PT":
+                    case "pt":
                         printServer.topQueue(_username, _arg[0], Integer.parseInt(_arg[1]));
                         break;
                     case "ps":
@@ -91,12 +103,11 @@ public class PrintClient {
         }
     }
 
-    private static boolean isInputLegal(boolean isPrintServerStarted, String input, IPrintServer printServer, String _username) throws RemoteException {
+    private static boolean isInputLegal(boolean isPrintServerStarted, String input) throws RemoteException {
         String[] _inputSplit = input.split(" ");
         if (_inputSplit[0].equals("exit"))
             return true;
         return _inputSplit[0].equals("s") || isPrintServerStarted;
-
     }
 
     private static void printOptions() {

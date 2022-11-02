@@ -91,7 +91,7 @@ public class PrinterTest {
         String content = outContent.toString();
         assert(
                 content.contains("Printer has 0 job(s)")
-                && !content.contains("Printing the job(s) now:")
+                && !content.contains("The jobs are:")
         );
     }
 

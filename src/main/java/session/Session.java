@@ -6,11 +6,11 @@ import java.util.HashMap;
 
 public class Session {
     ICrypto blowfish;
-    HashMap allSessions;
+    static HashMap<String, Date> allSessions = new HashMap<>();
 
     public Session() {
         blowfish = new Blowfish();
-        allSessions = new HashMap<String, Date>();
+        //allSessions = new HashMap<String, Date>();
     }
     public void recordNewSessionForUser(String username, Date currentDatetime){
         allSessions.put(username,currentDatetime);
