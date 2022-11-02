@@ -60,3 +60,54 @@ Sat Oct 29 16:59:06 CEST 2022
 s223300: Invalid Credentials
 Sat Oct 29 16:59:06 CEST 2022
 ========**========
+: Starting the server
+Wed Nov 02 16:00:19 CET 2022
+========**========
+: Starting the server
+Wed Nov 02 16:09:55 CET 2022
+========**========
+: Starting the server
+Wed Nov 02 16:10:52 CET 2022
+========**========
+s223300: Attempted login
+Wed Nov 02 16:11:02 CET 2022
+========**========
+s223300: Successfully logged in
+Wed Nov 02 16:11:02 CET 2022
+========**========
+s223300: Printing file
+Wed Nov 02 16:11:20 CET 2022
+file1
+printer1
+========**========
+s223300: Showing the queue
+Wed Nov 02 16:11:28 CET 2022
+printer1
+========**========
+: Starting the server
+Wed Nov 02 16:13:22 CET 2022
+========**========
+s223300: Attempted login
+Wed Nov 02 16:13:34 CET 2022
+========**========
+s223300: Successfully logged in
+Wed Nov 02 16:13:34 CET 2022
+========**========
+: Starting the server
+Wed Nov 02 16:14:27 CET 2022
+========**========
+s223300: Attempted login
+Wed Nov 02 16:14:37 CET 2022
+========**========
+s223300: Successfully logged in
+Wed Nov 02 16:14:37 CET 2022
+========**========
+: Starting the server
+Wed Nov 02 16:15:47 CET 2022
+========**========
+s223300: Attempted login
+Wed Nov 02 16:15:57 CET 2022
+========**========
+s223300: Successfully logged in
+Wed Nov 02 16:15:57 CET 2022
+========**========

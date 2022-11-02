@@ -81,8 +81,10 @@ public class PrintClient {
             } catch (Exception e) {
                 if (e.getMessage().contains("Invalid Credentials")) {
                     System.out.println("Invalid Credentials");
-                }else {
-                    System.out.println("Error. Try again.");
+                } else if (e.getMessage().contains("Invalid/Non-Existent Session")) {
+                    System.out.println("Invalid/Non-Existent Session");
+                } else {
+                    System.out.println("Error. Try again." + e.getMessage());
                 }
                 continue;
             }
@@ -93,17 +95,8 @@ public class PrintClient {
         String[] _inputSplit = input.split(" ");
         if (_inputSplit[0].equals("exit"))
             return true;
-        if (_inputSplit[0].equals("s") && !isPrintServerStarted) {
-            return true;
-        }
+        return _inputSplit[0].equals("s") || isPrintServerStarted;
 
-        if (!_username.isEmpty()) {
-            if (!printServer.checkSession(_username)) {
-                System.out.println("Session Expired, login again.");
-                return false;
-            }
-        }
-        return true;
     }
 
     private static void printOptions() {
