@@ -22,6 +22,9 @@ public class Session {
     }
     
     public boolean checkSessionForUser(String username){
+        if (!allSessions.containsKey(username)){
+            return false;
+        }
         Date recordedDateTime = (Date) allSessions.get(username);
         Date currentDateTime = new Date();
 
