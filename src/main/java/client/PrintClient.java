@@ -30,7 +30,19 @@ public class PrintClient {
             System.out.print("Password: ");
             _password = _scanner.nextLine();
 
-            _sessionToken = printServer.login(_username, _password);
+            try {
+                _sessionToken = printServer.login(_username, _password);
+            }
+            catch (Exception e) {
+                if (e.getMessage().contains("Invalid Credentials")) {
+                    System.out.println("Invalid Credentials");
+                } else if (e.getMessage().contains("Invalid/Non-Existent Session")) {
+                    System.out.println("Invalid/Non-Existent Session");
+                } else {
+                    System.out.println("Error. Try again." + e.getMessage());
+                }
+                continue;
+            }
             if (_sessionToken != null) {
                 _isLoggedIn = true;
                 printServer = printServer.start(_username);
