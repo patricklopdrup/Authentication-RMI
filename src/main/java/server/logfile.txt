@@ -1,0 +1,471 @@
+s223300: Printing file
+Sat Oct 29 16:47:31 CEST 2022
+helloworld
+printer1
+========**========
+: Starting the server
+Sat Oct 29 16:52:18 CEST 2022
+========**========
+: Stopping the server
+Sat Oct 29 16:52:53 CEST 2022
+========**========
+: Starting the server
+Sat Oct 29 16:53:03 CEST 2022
+========**========
+: Starting the server
+Sat Oct 29 16:53:13 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:53:22 CEST 2022
+========**========
+s223300: Successfully logged in
+Sat Oct 29 16:53:22 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:53:39 CEST 2022
+========**========
+s223300: Invalid Credentials
+Sat Oct 29 16:53:39 CEST 2022
+========**========
+: Starting the server
+Sat Oct 29 16:56:00 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:56:06 CEST 2022
+========**========
+s223300: Invalid Credentials
+Sat Oct 29 16:56:06 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:56:16 CEST 2022
+========**========
+s223300: Successfully logged in
+Sat Oct 29 16:56:16 CEST 2022
+========**========
+: Starting the server
+Sat Oct 29 16:58:05 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:58:22 CEST 2022
+========**========
+s223300: Invalid Credentials
+Sat Oct 29 16:58:22 CEST 2022
+========**========
+: Starting the server
+Sat Oct 29 16:59:03 CEST 2022
+========**========
+s223300: Attempted login
+Sat Oct 29 16:59:06 CEST 2022
+========**========
+s223300: Invalid Credentials
+Sat Oct 29 16:59:06 CEST 2022
+========**========
+: Starting the server
+Wed Nov 02 16:00:19 CET 2022
+========**========
+: Starting the server
+Wed Nov 02 16:09:55 CET 2022
+========**========
+: Starting the server
+Wed Nov 02 16:10:52 CET 2022
+========**========
+s223300: Attempted login
+Wed Nov 02 16:11:02 CET 2022
+========**========
+s223300: Successfully logged in
+Wed Nov 02 16:11:02 CET 2022
+========**========
+s223300: Printing file
+Wed Nov 02 16:11:20 CET 2022
+file1
+printer1
+========**========
+s223300: Showing the queue
+Wed Nov 02 16:11:28 CET 2022
+printer1
+========**========
+: Starting the server
+Wed Nov 02 16:13:22 CET 2022
+========**========
+s223300: Attempted login
+Wed Nov 02 16:13:34 CET 2022
+========**========
+s223300: Successfully logged in
+Wed Nov 02 16:13:34 CET 2022
+========**========
+: Starting the server
+Wed Nov 02 16:14:27 CET 2022
+========**========
+s223300: Attempted login
+Wed Nov 02 16:14:37 CET 2022
+========**========
+s223300: Successfully logged in
+Wed Nov 02 16:14:37 CET 2022
+========**========
+: Starting the server
+Wed Nov 02 16:15:47 CET 2022
+========**========
+s223300: Attempted login
+Wed Nov 02 16:15:57 CET 2022
+========**========
+s223300: Successfully logged in
+Wed Nov 02 16:15:57 CET 2022
+========**========
+: Starting the server
+Wed Nov 02 17:43:17 CET 2022
+========**========
+s223300: Attempted login
+Wed Nov 02 17:43:24 CET 2022
+========**========
+s223300: Successfully logged in
+Wed Nov 02 17:43:24 CET 2022
+========**========
+s223300: Printing file
+Wed Nov 02 17:43:30 CET 2022
+t
+q
+========**========
+s223300: Showing the queue
+Wed Nov 02 17:43:41 CET 2022
+q
+========**========
+plh: Attempted login
+Wed Nov 02 19:35:30 CET 2022
+========**========
+plh: Successfully logged in
+Wed Nov 02 19:35:30 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:35:30 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:35:39 CET 2022
+========**========
+plh: Attempted login
+Wed Nov 02 19:35:59 CET 2022
+========**========
+plh: Successfully logged in
+Wed Nov 02 19:35:59 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:35:59 CET 2022
+========**========
+plh: Printing file
+Wed Nov 02 19:36:14 CET 2022
+t
+1
+========**========
+plh: Showing the queue
+Wed Nov 02 19:36:20 CET 2022
+1
+========**========
+plh: Showing the queue
+Wed Nov 02 19:36:41 CET 2022
+1
+========**========
+plh: Starting the server
+Wed Nov 02 19:36:43 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:38:45 CET 2022
+========**========
+plh: Attempted login
+Wed Nov 02 19:39:44 CET 2022
+========**========
+plh: Successfully logged in
+Wed Nov 02 19:40:44 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:40:49 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:41:06 CET 2022
+========**========
+plh: Attempted login
+Wed Nov 02 19:44:02 CET 2022
+========**========
+plh: Successfully logged in
+Wed Nov 02 19:44:02 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:44:02 CET 2022
+========**========
+plh: Printing file
+Wed Nov 02 19:44:10 CET 2022
+q
+1
+========**========
+plh: Showing the queue
+Wed Nov 02 19:44:15 CET 2022
+1
+========**========
+plh: Starting the server
+Wed Nov 02 19:44:18 CET 2022
+========**========
+plh: Showing the queue
+Wed Nov 02 19:44:21 CET 2022
+1
+========**========
+plh: Printing file
+Wed Nov 02 19:44:25 CET 2022
+g
+2
+========**========
+plh: Showing the queue
+Wed Nov 02 19:44:30 CET 2022
+2
+========**========
+plh: Restarting the server
+Wed Nov 02 19:44:33 CET 2022
+========**========
+plh: Stopping the server
+Wed Nov 02 19:44:33 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:44:33 CET 2022
+========**========
+plh: Printing file
+Wed Nov 02 19:44:46 CET 2022
+test.txt
+p1
+========**========
+plh: Showing the queue
+Wed Nov 02 19:44:49 CET 2022
+p1
+========**========
+plh: Printing file
+Wed Nov 02 19:44:55 CET 2022
+hello
+p1
+========**========
+plh: Showing the queue
+Wed Nov 02 19:44:58 CET 2022
+p1
+========**========
+plh: Showing the queue
+Wed Nov 02 19:45:13 CET 2022
+p11
+========**========
+plh: Showing the queue
+Wed Nov 02 19:45:16 CET 2022
+p1
+========**========
+plh: Printing file
+Wed Nov 02 19:45:45 CET 2022
+bund
+p1
+========**========
+plh: Showing the queue
+Wed Nov 02 19:45:47 CET 2022
+p1
+========**========
+plh: Showing the queue
+Wed Nov 02 19:45:55 CET 2022
+p1
+========**========
+plh: Showing the queue
+Wed Nov 02 19:46:13 CET 2022
+p1
+========**========
+plh: Attempted login
+Wed Nov 02 19:54:51 CET 2022
+========**========
+plh: Successfully logged in
+Wed Nov 02 19:54:55 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:54:56 CET 2022
+========**========
+plh: Stopping the server
+Wed Nov 02 19:55:11 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:56:02 CET 2022
+========**========
+plh: Printing file
+Wed Nov 02 19:56:43 CET 2022
+h
+p
+========**========
+plh: Showing the queue
+Wed Nov 02 19:56:49 CET 2022
+p
+========**========
+plh: Printing file
+Wed Nov 02 19:57:03 CET 2022
+hej.txt
+p
+========**========
+plh: Printing file
+Wed Nov 02 19:57:20 CET 2022
+bund.txt
+p
+========**========
+plh: Showing the queue
+Wed Nov 02 19:57:23 CET 2022
+p
+========**========
+plh: Showing the queue
+Wed Nov 02 19:57:39 CET 2022
+p
+========**========
+plh: Attempted login
+Wed Nov 02 19:58:02 CET 2022
+========**========
+plh: Successfully logged in
+Wed Nov 02 19:58:07 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 19:58:07 CET 2022
+========**========
+plh: Printing file
+Wed Nov 02 19:58:18 CET 2022
+hej.txt
+p
+========**========
+plh: Printing file
+Wed Nov 02 19:58:27 CET 2022
+t.txt
+p
+========**========
+plh: Printing file
+Wed Nov 02 19:58:33 CET 2022
+bund.txt
+p
+========**========
+plh: Showing the queue
+Wed Nov 02 19:58:36 CET 2022
+p
+========**========
+plh: Showing the queue
+Wed Nov 02 19:58:51 CET 2022
+p
+========**========
+plh: Attempted login
+Wed Nov 02 20:00:56 CET 2022
+========**========
+plh: Successfully logged in
+Wed Nov 02 20:00:56 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 20:00:56 CET 2022
+========**========
+plh: Printing file
+Wed Nov 02 20:01:09 CET 2022
+t
+p
+========**========
+plh: Printing file
+Wed Nov 02 20:01:16 CET 2022
+hej.txt
+p
+========**========
+plh: Printing file
+Wed Nov 02 20:01:21 CET 2022
+bund.txt
+p
+========**========
+plh: Showing the queue
+Wed Nov 02 20:01:23 CET 2022
+p
+========**========
+plh: Putting the file to the top  of the queue
+Wed Nov 02 20:01:27 CET 2022
+p
+2
+========**========
+plh: Showing the queue
+Wed Nov 02 20:01:28 CET 2022
+p
+========**========
+plh: Retrieving the status of the printer
+Wed Nov 02 20:01:48 CET 2022
+p
+========**========
+plh: Attempted login
+Wed Nov 02 20:03:18 CET 2022
+========**========
+plh: Successfully logged in
+Wed Nov 02 20:03:18 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 20:03:18 CET 2022
+========**========
+plh: Printing file
+Wed Nov 02 20:03:42 CET 2022
+hej.txt
+p
+========**========
+plh: Printing file
+Wed Nov 02 20:03:51 CET 2022
+hej2.txt
+p1
+========**========
+plh: Showing the queue
+Wed Nov 02 20:03:58 CET 2022
+p
+========**========
+plh: Showing the queue
+Wed Nov 02 20:04:05 CET 2022
+p1
+========**========
+plh: Setting the parameter in the config
+Wed Nov 02 20:04:28 CET 2022
+size
+a4
+========**========
+plh: Reading the parameter from the config
+Wed Nov 02 20:04:32 CET 2022
+size
+========**========
+plh: Reading the parameter from the config
+Wed Nov 02 20:04:36 CET 2022
+hej
+========**========
+plh: Setting the parameter in the config
+Wed Nov 02 20:04:47 CET 2022
+hej
+123
+========**========
+plh: Reading the parameter from the config
+Wed Nov 02 20:04:49 CET 2022
+hej
+========**========
+plh: Retrieving the status of the printer
+Wed Nov 02 20:05:01 CET 2022
+p
+========**========
+plh: Putting the file to the top  of the queue
+Wed Nov 02 20:05:14 CET 2022
+p
+0
+========**========
+plh: Showing the queue
+Wed Nov 02 20:05:18 CET 2022
+p
+========**========
+plh: Restarting the server
+Wed Nov 02 20:05:23 CET 2022
+========**========
+plh: Stopping the server
+Wed Nov 02 20:05:23 CET 2022
+========**========
+plh: Starting the server
+Wed Nov 02 20:05:23 CET 2022
+========**========
+plh: Showing the queue
+Wed Nov 02 20:05:26 CET 2022
+p
+========**========
+plh: Printing file
+Wed Nov 02 20:05:32 CET 2022
+hej.txt
+p
+========**========
+plh: Showing the queue
+Wed Nov 02 20:05:34 CET 2022
+p
+========**========
+plh: Stopping the server
+Wed Nov 02 20:05:37 CET 2022
+========**========
