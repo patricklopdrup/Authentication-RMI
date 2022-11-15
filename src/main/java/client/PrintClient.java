@@ -2,17 +2,13 @@ package client;
 
 import server.IPrintServer;
 import server.PrintServer;
-
-import java.net.MalformedURLException;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
 public class PrintClient {
-    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
+    public static void main(String[] args) throws RemoteException {
         IPrintServer printServer = new PrintServer();
 
         Scanner _scanner = new Scanner(System.in);

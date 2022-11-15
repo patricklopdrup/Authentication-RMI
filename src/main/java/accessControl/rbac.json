@@ -1,0 +1,49 @@
+{
+  "users": [
+    { "name": "plh" },
+  ],
+  "roles": [
+    {
+      "name": "Manager",
+      "members": [ "Alice" ],
+      "policies": [ "PolicyManager" ]
+    },
+    {
+      "name": "Technician",
+      "members": [ "Bob" ],
+      "policies": ["PolicyTechnician"]
+    },
+    {
+      "name": "PowerUser",
+      "members": [ "Cecilia" ],
+      "policies": ["PolicyPowerUser"]
+    },
+    {
+      "name": "User",
+      "members": [ "David", "Erika", "Fred", "George" ],
+      "policies": ["PolicyUser"]
+    }
+  ],
+  "policies": [
+    {
+      "name": "PolicyManager",
+      "description": "Perform all operations.",
+      "rules": ["*"]
+    },
+    {
+      "name": "PolicyTechnician",
+      "description": "Can start, stop, restart, inspect, and modify",
+      "rules": ["start", "stop", "restart", "status", "readConfig", "setConfig"]
+    },
+    {
+      "name": "PolicyPowerUser",
+      "description": "Print and manage the print queue",
+      "rules": ["queue", "topQueue", "restart"]
+    },
+    {
+      "name": "PolicyUser",
+      "description": "Print and display queues",
+      "rules": ["print", "queue"]
+    }
+  ]
+}
