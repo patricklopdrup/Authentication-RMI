@@ -41,8 +41,6 @@ public class PrintClient {
             }
             if (_sessionToken != null) {
                 _isLoggedIn = true;
-                printServer = printServer.start(_username);
-                _isPrintServerStarted = true;
                 break;
             }
         }
@@ -103,6 +101,8 @@ public class PrintClient {
                     System.out.println("Invalid Credentials");
                 } else if (e.getMessage().contains("Invalid/Non-Existent Session")) {
                     System.out.println("Invalid/Non-Existent Session");
+                }else if (e.getMessage().contains("Permission Error")) {
+                    System.out.println(_username + " does not have permission to " + _type);
                 } else {
                     System.out.println("Error. Try again." + e.getMessage());
                 }

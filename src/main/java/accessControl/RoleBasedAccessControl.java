@@ -48,9 +48,13 @@ public class RoleBasedAccessControl implements IAccessControl {
     }
 
     @Override
-    public boolean userHasAccess(String username, String rule) throws IOException, ParseException {
-        Policy policyForUser = getPolicyForUser(username);
-        return isRuleInPolicy(policyForUser, rule);
+    public boolean userHasAccess(String username, String rule) {
+        try {
+            Policy policyForUser = getPolicyForUser(username);
+            return isRuleInPolicy(policyForUser, rule);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public boolean isRuleInPolicy(Policy policy, String rule) throws IOException, ParseException {

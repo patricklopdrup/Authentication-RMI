@@ -469,3 +469,71 @@ p
 plh: Stopping the server
 Wed Nov 02 20:05:37 CET 2022
 ========**========
+Alice: Attempted login
+Wed Nov 16 16:46:06 CET 2022
+========**========
+Alice: Successfully logged in
+Wed Nov 16 16:46:06 CET 2022
+========**========
+Alice: start
+Wed Nov 16 16:46:06 CET 2022
+========**========
+Alice: print
+Wed Nov 16 16:47:35 CET 2022
+hej.txt
+p1
+========**========
+Alice: queue
+Wed Nov 16 16:47:41 CET 2022
+p1
+========**========
+David: Attempted login
+Wed Nov 16 16:48:17 CET 2022
+========**========
+David: Successfully logged in
+Wed Nov 16 16:48:17 CET 2022
+========**========
+David: start
+Wed Nov 16 16:48:17 CET 2022
+========**========
+David: restart
+Wed Nov 16 16:48:33 CET 2022
+========**========
+David: stop
+Wed Nov 16 16:48:33 CET 2022
+========**========
+David: start
+Wed Nov 16 16:48:33 CET 2022
+========**========
+Alice: Attempted login
+Wed Nov 16 16:49:56 CET 2022
+========**========
+Alice: Successfully logged in
+Wed Nov 16 16:49:56 CET 2022
+========**========
+Alice: Successfully logged in
+Wed Nov 16 16:51:28 CET 2022
+========**========
+Alice: start
+Wed Nov 16 16:57:19 CET 2022
+========**========
+Alice: print
+Wed Nov 16 16:57:35 CET 2022
+hej.txt
+p1
+========**========
+Alice: stop
+Wed Nov 16 16:57:38 CET 2022
+========**========
+Alice: start
+Wed Nov 16 16:57:46 CET 2022
+========**========
+Alice: print
+Wed Nov 16 16:57:53 CET 2022
+hej.txt
+p1
+========**========
+Alice: queue
+Wed Nov 16 16:57:58 CET 2022
+p1
+========**========

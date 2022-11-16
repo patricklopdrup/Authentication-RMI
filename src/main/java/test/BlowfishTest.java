@@ -29,8 +29,9 @@ public class BlowfishTest {
 
     @Test
     void check_hashFromPassword_expectTrue() {
-        String password = "MyPass123";
+        String password = "David1";
         String hash = blowfish.getHash(password);
+        System.out.println(hash);
 
         assert(blowfish.isPasswordCorrect(password, hash));
     }

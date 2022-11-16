@@ -1,8 +1,10 @@
 package server;
 
 import com.company.Main;
+import org.json.simple.parser.ParseException;
 import printer.Printer;
 import session.Session;
+import accessControl.RoleBasedAccessControl;
 
 import java.io.*;
 import java.rmi.Naming;
@@ -14,6 +16,7 @@ import java.util.HashMap;
 public class PrintServer extends UnicastRemoteObject implements IPrintServer {
     private HashMap<String, Printer> _printers = new HashMap<String, Printer>();
     private HashMap<String, String> _config = new HashMap<>();
+    private RoleBasedAccessControl rbac = new RoleBasedAccessControl();
 
     private Session session;
     public PrintServer() throws RemoteException {
@@ -21,7 +24,10 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
         session = new Session();
     }
 
-    public void validateSessionAndRecordAction(String username, String action, String[] entities) throws RemoteException {
+    public void validateSessionAndRecordAction(String username, String method, String[] entities) throws RemoteException  {
+        if (!rbac.userHasAccess(username, method)) {
+            throw new RemoteException("Permission Error");
+        }
         Date currentDateTime = new Date();
         PrintWriter writer = null;
         try {
@@ -30,13 +36,13 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
             System.out.println("Logfile not found");
         }
 
-        writer.println(username + ": " + action);
+        writer.println(username + ": " + method);
         writer.println(currentDateTime);
         for(String entity: entities){
             writer.println(entity);
         }
 
-        if (!action.matches("Attempted login|Successfully logged in|Starting the server|Invalid Credentials") ) {
+        if (!method.matches("Attempted login|Successfully logged in|Starting the server|Invalid Credentials") ) {
             if (!session.checkSessionForUser(username)) {
                 writer.println("Invalid/Non-Existent Session");
                 throw new RemoteException("Invalid/Non-Existent Session");
@@ -48,14 +54,12 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
     }
     @Override
     public Date login(String username, String password) throws RemoteException {
-        validateSessionAndRecordAction(username, "Attempted login", new String[]{});
         Date sessionToken = session.login(username,password);
         if(sessionToken == null){
             validateSessionAndRecordAction(username, "Invalid Credentials", new String[]{});
             throw new RemoteException("Invalid Credentials");
         }
         System.out.println("Successfully Logged In");
-        validateSessionAndRecordAction(username, "Successfully logged in", new String[]{});
 
         return sessionToken;
     }
@@ -65,7 +69,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
     @Override
     public void print(String username, String filename, String printer) throws RemoteException {
-        validateSessionAndRecordAction(username, "Printing file", new String[]{filename,printer});
+        validateSessionAndRecordAction(username, "print", new String[]{filename,printer});
         Printer _printer = _printers.get(printer);
 
         if (_printer != null) {
@@ -85,7 +89,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
     @Override
     public void queue(String username, String printer) throws RemoteException {
-        validateSessionAndRecordAction(username, "Showing the queue", new String[]{printer});
+        validateSessionAndRecordAction(username, "queue", new String[]{printer});
 
         Printer _printer = _printers.get(printer);
 
@@ -96,7 +100,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
     @Override
     public void topQueue(String username, String printer, int job) throws RemoteException {
-        validateSessionAndRecordAction(username, "Putting the file to the top  of the queue", new String[]{printer,String.valueOf(job)});
+        validateSessionAndRecordAction(username, "topQueue", new String[]{printer,String.valueOf(job)});
 
         Printer _printer = _printers.get(printer);
 
@@ -107,7 +111,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
     @Override
     public IPrintServer start(String username) throws RemoteException {
-        validateSessionAndRecordAction(username, "Starting the server", new String[]{});
+        validateSessionAndRecordAction(username, "start", new String[]{});
 
         String[] _args = { "start" };
         Main.main(_args);
@@ -123,7 +127,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
     @Override
     public void stop(String username) throws RemoteException {
-        validateSessionAndRecordAction(username, "Stopping the server", new String[]{});
+        validateSessionAndRecordAction(username, "stop", new String[]{});
 
         String[] _args = { "stop" };
         Main.main(_args);
@@ -132,7 +136,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
     @Override
     public void restart(String username) throws RemoteException {
-        validateSessionAndRecordAction(username, "Restarting the server", new String[]{});
+        validateSessionAndRecordAction(username, "restart", new String[]{});
         stop(username);
         System.out.println("Clearing Print Queue...");
         _printers.clear();
@@ -142,7 +146,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
     @Override
     public void status(String username,String printer) throws RemoteException {
-        validateSessionAndRecordAction(username, "Retrieving the status of the printer", new String[]{printer});
+        validateSessionAndRecordAction(username, "status", new String[]{printer});
 
         Printer _printer = _printers.get(printer);
         _printer.printStatus();
@@ -150,7 +154,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
     @Override
     public void readConfig(String username, String parameter) throws RemoteException {
-        validateSessionAndRecordAction(username, "Reading the parameter from the config", new String[]{parameter});
+        validateSessionAndRecordAction(username, "readConfig", new String[]{parameter});
 
         String value = _config.getOrDefault(parameter, null);
         if (value == null)
@@ -161,7 +165,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
     @Override
     public void setConfig(String username, String parameter, String value) throws RemoteException {
-        validateSessionAndRecordAction(username, "Setting the parameter in the config", new String[]{parameter, value});
+        validateSessionAndRecordAction(username, "setConfig", new String[]{parameter, value});
         _config.put(parameter, value);
     }
 
