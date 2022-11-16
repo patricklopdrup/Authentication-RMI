@@ -1,34 +1,34 @@
 {
   "users": [
-    { "name": "plh" },
+    { "name": "plh" }
   ],
   "roles": [
     {
       "name": "Manager",
       "members": [ "Alice" ],
-      "policies": [ "PolicyManager" ]
+      "policy": "PolicyAdmin"
     },
     {
       "name": "Technician",
       "members": [ "Bob" ],
-      "policies": ["PolicyTechnician"]
+      "policy": "PolicyTechnician"
     },
     {
       "name": "PowerUser",
       "members": [ "Cecilia" ],
-      "policies": ["PolicyPowerUser"]
+      "policy": "PolicyPowerUser"
     },
     {
       "name": "User",
       "members": [ "David", "Erika", "Fred", "George" ],
-      "policies": ["PolicyUser"]
+      "policy": "PolicyUser"
     }
   ],
   "policies": [
     {
-      "name": "PolicyManager",
+      "name": "PolicyAdmin",
       "description": "Perform all operations.",
-      "rules": ["*"]
+      "rules": []
     },
     {
       "name": "PolicyTechnician",
@@ -38,7 +38,7 @@
     {
       "name": "PolicyPowerUser",
       "description": "Print and manage the print queue",
-      "rules": ["queue", "topQueue", "restart"]
+      "rules": ["topQueue", "restart"]
     },
     {
       "name": "PolicyUser",
