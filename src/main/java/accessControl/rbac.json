@@ -1,7 +1,4 @@
 {
-  "users": [
-    { "name": "plh" }
-  ],
   "roles": [
     {
       "name": "Manager",
