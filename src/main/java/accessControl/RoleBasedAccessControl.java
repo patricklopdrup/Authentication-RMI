@@ -13,6 +13,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class RoleBasedAccessControl implements IAccessControl {
+    @Override
+    public boolean userHasAccess(String username, String rule) {
+        try {
+            Policy policyForUser = getPolicyForUser(username);
+            return isRuleInPolicy(policyForUser, rule);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public enum Policy {
         PolicyAdmin,
         PolicyTechnician,
@@ -38,23 +48,15 @@ public class RoleBasedAccessControl implements IAccessControl {
         ArrayList<Policy> result = new ArrayList<>();
         result.add(policy);
         Policy[] curUnderLyingPolicies = getHierarchyForPolicy(policy);
-        result.addAll(Arrays.asList(curUnderLyingPolicies));
+        if (curUnderLyingPolicies != null) {
+            result.addAll(Arrays.asList(curUnderLyingPolicies));
+        }
 
         return result;
     }
 
     private Policy getLowestPrivilege() {
         return Policy.PolicyUser;
-    }
-
-    @Override
-    public boolean userHasAccess(String username, String rule) {
-        try {
-            Policy policyForUser = getPolicyForUser(username);
-            return isRuleInPolicy(policyForUser, rule);
-        } catch (Exception e) {
-            return false;
-        }
     }
 
     public boolean isRuleInPolicy(Policy policy, String rule) throws IOException, ParseException {

@@ -1,7 +1,7 @@
 package server;
 
+import accessControl.IAccessControl;
 import com.company.Main;
-import org.json.simple.parser.ParseException;
 import printer.Printer;
 import session.Session;
 import accessControl.RoleBasedAccessControl;
@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class PrintServer extends UnicastRemoteObject implements IPrintServer {
     private HashMap<String, Printer> _printers = new HashMap<String, Printer>();
     private HashMap<String, String> _config = new HashMap<>();
-    private RoleBasedAccessControl rbac = new RoleBasedAccessControl();
+    private IAccessControl _rbac = new RoleBasedAccessControl();
 
     private Session session;
     public PrintServer() throws RemoteException {
@@ -25,7 +25,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
     }
 
     public void validateSessionAndRecordAction(String username, String method, String[] entities) throws RemoteException  {
-        if (!rbac.userHasAccess(username, method)) {
+        if (!_rbac.userHasAccess(username, method)) {
             throw new RemoteException("Permission Error");
         }
         Date currentDateTime = new Date();
