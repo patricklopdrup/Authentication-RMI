@@ -13,16 +13,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class RoleBasedAccessControl implements IAccessControl {
-    @Override
-    public boolean userHasAccess(String username, String rule) {
-        try {
-            Policy policyForUser = getPolicyForUser(username);
-            return isRuleInPolicy(policyForUser, rule);
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
     public enum Policy {
         PolicyAdmin,
         PolicyTechnician,
@@ -44,31 +34,14 @@ public class RoleBasedAccessControl implements IAccessControl {
         return null;
     }
 
-    private ArrayList<Policy> getAllUnderlyingPoliciesForPolicy(Policy policy) {
-        ArrayList<Policy> result = new ArrayList<>();
-        result.add(policy);
-        Policy[] curUnderLyingPolicies = getHierarchyForPolicy(policy);
-        if (curUnderLyingPolicies != null) {
-            result.addAll(Arrays.asList(curUnderLyingPolicies));
+    @Override
+    public boolean userHasAccess(String username, String rule) {
+        try {
+            Policy policyForUser = getPolicyForUser(username);
+            return isRuleInPolicy(policyForUser, rule);
+        } catch (Exception e) {
+            return false;
         }
-
-        return result;
-    }
-
-    private Policy getLowestPrivilege() {
-        return Policy.PolicyUser;
-    }
-
-    public boolean isRuleInPolicy(Policy policy, String rule) throws IOException, ParseException {
-        Set<String> roles = getRulesForPolicy(policy);
-        return roles.contains(rule);
-    }
-
-    private JSONObject getJsonObject() throws IOException, ParseException {
-        JSONParser jsonParser = new JSONParser();
-        FileReader reader = new FileReader("src\\main\\java\\accessControl\\rbac.json");
-        JSONObject obj = (JSONObject) jsonParser.parse(reader);
-        return obj;
     }
 
     public Policy getPolicyForUser(String username) throws IOException, ParseException {
@@ -84,6 +57,23 @@ public class RoleBasedAccessControl implements IAccessControl {
             }
         }
         return getLowestPrivilege();
+    }
+
+    private Policy getLowestPrivilege() {
+        return Policy.PolicyUser;
+    }
+
+    private Policy convertPolicyToEnum(String policy) {
+        for (Policy p : Policy.values()) {
+            if (p.toString().equals(policy))
+                return p;
+        }
+        return getLowestPrivilege();
+    }
+
+    public boolean isRuleInPolicy(Policy policy, String rule) throws IOException, ParseException {
+        Set<String> roles = getRulesForPolicy(policy);
+        return roles.contains(rule);
     }
 
     public Set<String> getRulesForPolicy(Policy policy) throws IOException, ParseException {
@@ -106,35 +96,21 @@ public class RoleBasedAccessControl implements IAccessControl {
         return result;
     }
 
-
-    private Policy convertPolicyToEnum(String policy) {
-        for (Policy p : Policy.values()) {
-            if (p.toString().equals(policy))
-                return p;
+    private ArrayList<Policy> getAllUnderlyingPoliciesForPolicy(Policy policy) {
+        ArrayList<Policy> result = new ArrayList<>();
+        result.add(policy);
+        Policy[] curUnderLyingPolicies = getHierarchyForPolicy(policy);
+        if (curUnderLyingPolicies != null) {
+            result.addAll(Arrays.asList(curUnderLyingPolicies));
         }
-        return getLowestPrivilege();
+
+        return result;
     }
 
-    public void test() {
-
-//            JSONArray roles = (JSONArray) obj.get("policies");
-//
-//            for (Object x : roles) {
-//                System.out.println(((JSONObject)x).get("name"));
-//            }
-//            roles.forEach(mem -> System.out.println(mem));
-
-//            System.out.println(obj);
-//
-//            JSONArray roles = new JSONArray();
-//            roles.add(obj);
-//            role
-//            roles.forEach(role -> System.out.println(role));
-//
-//            System.out.println(roles);
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
+    private JSONObject getJsonObject() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader("src\\main\\java\\accessControl\\rbac.json");
+        JSONObject obj = (JSONObject) jsonParser.parse(reader);
+        return obj;
     }
-
 }
