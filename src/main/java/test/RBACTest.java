@@ -44,7 +44,9 @@ public class RBACTest {
             expected.add("print");
             expected.add("queue");
 
-            assertEquals(roles, expected);
+            assertTrue(expected.size() == roles.size()
+                    && expected.containsAll(roles)
+                    && roles.containsAll(expected));
         } catch (Exception e) {}
     }
 
