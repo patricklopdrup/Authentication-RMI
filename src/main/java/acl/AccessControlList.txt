@@ -1,2 +1,2 @@
-s223300:queue,topQueue,start,stop,restart,status,readConfig,setConfig
-plh:queue,topQueue,start,stop,restart,status,readConfig,setConfig
+s223300:start,print,queue,topQueue,start,stop,restart,status,readConfig,setConfig
+plh:start,topQueue,start,stop,restart,status,readConfig,setConfig,queue,queueBottom

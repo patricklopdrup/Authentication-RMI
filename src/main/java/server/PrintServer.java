@@ -21,7 +21,11 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
         super();
         session = new Session();
         accessControl = new AccessControl();
-        System.out.println(accessControl.checkUserAccess("plh", "print"));
+//        System.out.println(accessControl.checkUserAccess("plh", "print"));
+//        String result = accessControl.addServiceAccessForUser("plh", "queueBottom");
+//        System.out.println(result);
+//        String removeResult = accessControl.removeServiceForUser("plh", "testEverything");
+//        System.out.println(removeResult);
     }
 
     public void validateAndRecordAction(String username, String action, String[] entities) throws RemoteException {
