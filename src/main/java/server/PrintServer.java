@@ -24,10 +24,8 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
         session = new Session();
     }
 
+
     public void checkAccessAndValidateSession(String username, String method, String[] entities) throws RemoteException  {
-        if (!_rbac.userHasAccess(username, method)) {
-            throw new RemoteException("Permission Error");
-        }
         Date currentDateTime = new Date();
         PrintWriter writer = null;
         try {
@@ -47,6 +45,9 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
                 writer.println("Invalid/Non-Existent Session");
                 throw new RemoteException("Invalid/Non-Existent Session");
             }
+            if (!_rbac.userHasAccess(username, method)) {
+                throw new RemoteException("Permission Error");
+            }
         }
 
         writer.println("========**========");
@@ -63,8 +64,14 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
         return sessionToken;
     }
+
     public boolean checkSession(String username) throws RemoteException{
         return session.checkSessionForUser(username);
+    }
+
+    @Override
+    public void logout(String username) throws RemoteException {
+        System.out.println(username + " logging out...");
     }
 
     @Override

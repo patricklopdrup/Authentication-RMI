@@ -6,6 +6,7 @@ import java.util.Date;
 
 public interface IPrintServer extends Remote {
     public Date login(String username, String password) throws RemoteException;
+    public void logout(String username) throws RemoteException;
     public boolean checkSession(String username) throws RemoteException;
     public void print(String username, String filename, String printer) throws RemoteException;
     public void queue(String username, String printer) throws RemoteException;
