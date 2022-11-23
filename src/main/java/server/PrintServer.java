@@ -65,7 +65,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
         return sessionToken;
     }
 
-    public boolean checkSession(String username) throws RemoteException{
+    public boolean checkSession(String username) throws RemoteException {
         return session.checkSessionForUser(username);
     }
 

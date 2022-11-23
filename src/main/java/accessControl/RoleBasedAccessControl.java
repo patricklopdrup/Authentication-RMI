@@ -7,10 +7,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class RoleBasedAccessControl implements IAccessControl {
     public enum Policy {
@@ -25,7 +22,7 @@ public class RoleBasedAccessControl implements IAccessControl {
             case PolicyAdmin:
                 return new Policy[] { Policy.PolicyTechnician, Policy.PolicyPowerUser, Policy.PolicyUser };
             case PolicyTechnician:
-                return new Policy[] { Policy.PolicyUser };
+                return null; // cannot print or queue as a normal user can
             case PolicyPowerUser:
                 return new Policy[] { Policy.PolicyUser };
             case PolicyUser:
@@ -37,26 +34,33 @@ public class RoleBasedAccessControl implements IAccessControl {
     @Override
     public boolean userHasAccess(String username, String rule) {
         try {
-            Policy policyForUser = getPolicyForUser(username);
-            return isRuleInPolicy(policyForUser, rule);
+            Policy[] policiesForUser = getPoliciesForUser(username);
+            return isRuleInPolicies(policiesForUser, rule);
         } catch (Exception e) {
             return false;
         }
     }
 
-    public Policy getPolicyForUser(String username) throws IOException, ParseException {
+    public Policy[] getPoliciesForUser(String username) throws IOException, ParseException {
+        List<Policy> policies = new ArrayList<>();
         JSONObject json = getJsonObject();
         JSONArray roles = (JSONArray) json.get("roles");
         for (Object role : roles) {
             JSONArray members = (JSONArray) ((JSONObject)role).get("members");
             for (Object member : members) {
                 if (member.toString().equals(username)) {
-                    String policy = ((JSONObject)role).get("policy").toString();
-                    return convertPolicyToEnum(policy);
+                    JSONArray pols = (JSONArray) ((JSONObject)role).get("policy");
+                    for (Object pol : pols) {
+                        policies.add(convertPolicyToEnum(pol.toString()));
+                    }
                 }
             }
         }
-        return getLowestPrivilege();
+        if (policies.size() == 0) {
+            return new Policy[] { Policy.PolicyUser };
+        } else {
+            return policies.toArray(new Policy[policies.size()]);
+        }
     }
 
     private Policy getLowestPrivilege() {
@@ -71,8 +75,11 @@ public class RoleBasedAccessControl implements IAccessControl {
         return getLowestPrivilege();
     }
 
-    public boolean isRuleInPolicy(Policy policy, String rule) throws IOException, ParseException {
-        Set<String> roles = getRulesForPolicy(policy);
+    public boolean isRuleInPolicies(Policy[] policies, String rule) throws IOException, ParseException {
+        Set<String> roles = new HashSet<>();
+        for (Policy pol : policies) {
+            roles.addAll(getRulesForPolicy(pol));
+        }
         return roles.contains(rule);
     }
 

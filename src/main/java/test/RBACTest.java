@@ -15,24 +15,33 @@ public class RBACTest {
     @Test
     void get_policyForUserInRoleWithMultipleMembers_expectPolicyUser() {
         try {
-            RoleBasedAccessControl.Policy policy = rbac.getPolicyForUser("Erika");
-            assertEquals(policy, RoleBasedAccessControl.Policy.PolicyUser);
+            RoleBasedAccessControl.Policy[] policies = rbac.getPoliciesForUser("Erika");
+            RoleBasedAccessControl.Policy[] expected = new RoleBasedAccessControl.Policy[] {
+                    RoleBasedAccessControl.Policy.PolicyUser
+            };
+            assertArrayEquals(policies, expected);
         } catch (Exception e) { }
     }
 
     @Test
     void get_policyForUserInManagerRole() {
         try {
-            RoleBasedAccessControl.Policy policy = rbac.getPolicyForUser("Alice");
-            assertEquals(policy, RoleBasedAccessControl.Policy.PolicyAdmin);
+            RoleBasedAccessControl.Policy[] policies = rbac.getPoliciesForUser("Alice");
+            RoleBasedAccessControl.Policy[] expected = new RoleBasedAccessControl.Policy[] {
+                    RoleBasedAccessControl.Policy.PolicyAdmin
+            };
+            assertArrayEquals(policies, expected);
         } catch (Exception e) {}
     }
 
     @Test
     void get_policyForUserNotInSystem_expectLowestPrivileges() {
         try {
-            RoleBasedAccessControl.Policy policy = rbac.getPolicyForUser("ImNotInThisDomain");
-            assertEquals(policy, RoleBasedAccessControl.Policy.PolicyUser); // User == lowest privilege
+            RoleBasedAccessControl.Policy[] policies = rbac.getPoliciesForUser("ImNotInThisDomain");
+            RoleBasedAccessControl.Policy[] expected = new RoleBasedAccessControl.Policy[] {
+                    RoleBasedAccessControl.Policy.PolicyUser
+            };
+            assertArrayEquals(policies, expected);
         } catch (Exception e) {}
     }
 
@@ -61,6 +70,20 @@ public class RBACTest {
             expected.add("status");
             expected.add("readConfig");
             expected.add("setConfig");
+
+            assertTrue(expected.size() == roles.size()
+                    && expected.containsAll(roles)
+                    && roles.containsAll(expected));
+        } catch (Exception e) {}
+    }
+
+    @Test
+    void get_rulesForPowerUserPolicy() {
+        try {
+            Set<String> roles = rbac.getRulesForPolicy(RoleBasedAccessControl.Policy.PolicyPowerUser);
+            ArrayList<String> expected = new ArrayList<>();
+            expected.add("topQueue");
+            expected.add("restart");
             // can also do normal user stuff
             expected.add("print");
             expected.add("queue");
@@ -99,7 +122,8 @@ public class RBACTest {
     @Test
     void check_ifUserCanStartServer_expectFalse() {
         try {
-            boolean canUserStartServer = rbac.isRuleInPolicy(RoleBasedAccessControl.Policy.PolicyUser, "start");
+            RoleBasedAccessControl.Policy[] userPolicy = new RoleBasedAccessControl.Policy[] { RoleBasedAccessControl.Policy.PolicyUser };
+            boolean canUserStartServer = rbac.isRuleInPolicies(userPolicy, "start");
             assertFalse(canUserStartServer);
         } catch (Exception e) {}
     }
@@ -122,6 +146,20 @@ public class RBACTest {
     void canTechnicianMakeTopQueue_expectFalse() {
         try {
             assertFalse(rbac.userHasAccess("Bob", "topQueue"));
+        } catch (Exception e) {}
+    }
+
+    @Test
+    void canTechnicianMakePrint_expectFalse() {
+        try {
+            assertFalse(rbac.userHasAccess("Bob", "print"));
+        } catch (Exception e) {}
+    }
+
+    @Test
+    void canPowerUserReadConfig_expectFalse() {
+        try {
+            assertFalse(rbac.userHasAccess("Cecilia", "readConfig"));
         } catch (Exception e) {}
     }
 }
