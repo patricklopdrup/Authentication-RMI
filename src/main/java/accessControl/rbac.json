@@ -3,22 +3,22 @@
     {
       "name": "Manager",
       "members": [ "Alice" ],
-      "policy": ["PolicyAdmin"]
+      "policies": ["PolicyAdmin"]
     },
     {
       "name": "Technician",
       "members": [ "Bob" ],
-      "policy": ["PolicyTechnician"]
+      "policies": ["PolicyTechnician"]
     },
     {
       "name": "PowerUser",
       "members": [ "Cecilia" ],
-      "policy": ["PolicyPowerUser"]
+      "policies": ["PolicyPowerUser"]
     },
     {
       "name": "User",
       "members": [ "David", "Erika", "Fred", "George" ],
-      "policy": ["PolicyUser"]
+      "policies": ["PolicyUser"]
     }
   ],
   "policies": [

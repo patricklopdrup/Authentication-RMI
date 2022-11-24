@@ -49,7 +49,7 @@ public class RoleBasedAccessControl implements IAccessControl {
             JSONArray members = (JSONArray) ((JSONObject)role).get("members");
             for (Object member : members) {
                 if (member.toString().equals(username)) {
-                    JSONArray pols = (JSONArray) ((JSONObject)role).get("policy");
+                    JSONArray pols = (JSONArray) ((JSONObject)role).get("policies");
                     for (Object pol : pols) {
                         policies.add(convertPolicyToEnum(pol.toString()));
                     }
