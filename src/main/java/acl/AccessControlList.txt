@@ -1,2 +1,7 @@
-s223300:start,print,queue,topQueue,start,stop,restart,status,readConfig,setConfig
-plh:start,topQueue,start,stop,restart,status,readConfig,setConfig,queue,queueBottom
+Alice:start,print,queue,topQueue,start,stop,restart,status,readConfig,setConfig
+Bob:start,stop,restart,readConfig,setConfig
+Cecilia:print,queue,topQueue,restart
+David:print,queue
+Erica:print,queue
+Fred:print,queue
+George:print,queue

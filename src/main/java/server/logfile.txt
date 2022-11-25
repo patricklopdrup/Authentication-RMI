@@ -529,3 +529,157 @@ s223300: queue
 Tue Nov 22 19:20:43 CET 2022
 p1
 ========**========
+Alice: Attempted login
+Wed Nov 23 15:52:15 CET 2022
+========**========
+Alice: Successfully logged in
+Wed Nov 23 15:52:15 CET 2022
+========**========
+Alice: start
+Wed Nov 23 15:52:15 CET 2022
+========**========
+Alice: Attempted login
+Wed Nov 23 15:53:10 CET 2022
+========**========
+Alice: Successfully logged in
+Wed Nov 23 15:53:10 CET 2022
+========**========
+Alice: start
+Wed Nov 23 15:53:10 CET 2022
+========**========
+Alice: Attempted login
+Wed Nov 23 15:54:02 CET 2022
+========**========
+Alice: Successfully logged in
+Wed Nov 23 15:54:02 CET 2022
+========**========
+Alice: start
+Wed Nov 23 15:54:02 CET 2022
+========**========
+Alice: Attempted login
+Wed Nov 23 15:55:42 CET 2022
+========**========
+Alice: Successfully logged in
+Wed Nov 23 15:55:42 CET 2022
+========**========
+Alice: start
+Wed Nov 23 15:55:42 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 15:56:12 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 15:56:12 CET 2022
+========**========
+Bob: start
+Wed Nov 23 15:56:12 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 15:57:46 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 15:57:46 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 16:01:26 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 16:01:26 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 16:06:58 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 16:06:58 CET 2022
+========**========
+Boib: Attempted login
+Wed Nov 23 16:08:39 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 16:08:45 CET 2022
+========**========
+Bob: Invalid Credentials
+Wed Nov 23 16:08:45 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 16:09:01 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 16:09:02 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 16:11:57 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 16:11:57 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 16:13:32 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 16:14:35 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 16:17:49 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 16:17:49 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 16:22:36 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 16:22:36 CET 2022
+========**========
+David: Attempted login
+Wed Nov 23 16:26:01 CET 2022
+========**========
+David: Successfully logged in
+Wed Nov 23 16:26:01 CET 2022
+========**========
+Bob: Attempted login
+Wed Nov 23 16:32:42 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 16:32:42 CET 2022
+========**========
+Alice: Attempted login
+Wed Nov 23 16:32:53 CET 2022
+========**========
+Alice: Invalid Credentials
+Wed Nov 23 16:32:53 CET 2022
+========**========
+Alice: Attempted login
+Wed Nov 23 16:33:03 CET 2022
+========**========
+Alice: Successfully logged in
+Wed Nov 23 16:33:03 CET 2022
+========**========
+Alice: start
+Wed Nov 23 16:33:06 CET 2022
+========**========
+Alice: print
+Wed Nov 23 16:33:12 CET 2022
+file1
+printer1
+========**========
+Alice: queue
+Wed Nov 23 16:33:17 CET 2022
+printer1
+========**========
+Bob: Attempted login
+Wed Nov 23 16:33:26 CET 2022
+========**========
+Bob: Successfully logged in
+Wed Nov 23 16:33:26 CET 2022
+========**========
+Cecilia: Attempted login
+Wed Nov 23 16:35:21 CET 2022
+========**========
+Cecilia: Successfully logged in
+Wed Nov 23 16:35:21 CET 2022
+========**========
+Cecilia: queue
+Wed Nov 23 16:35:28 CET 2022
+printer1
+========**========

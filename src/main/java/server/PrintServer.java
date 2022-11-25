@@ -21,11 +21,6 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
         super();
         session = new Session();
         accessControl = new AccessControl();
-//        System.out.println(accessControl.checkUserAccess("plh", "print"));
-//        String result = accessControl.addServiceAccessForUser("plh", "queueBottom");
-//        System.out.println(result);
-//        String removeResult = accessControl.removeServiceForUser("plh", "testEverything");
-//        System.out.println(removeResult);
     }
 
     public void validateAndRecordAction(String username, String action, String[] entities) throws RemoteException {
@@ -43,7 +38,7 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
             writer.println(entity);
         }
 
-        if (!action.matches("Attempted login|Successfully logged in|start|Invalid Credentials") ) {
+        if (!action.matches("Attempted login|Successfully logged in|Invalid Credentials") ) {
             if (!session.checkSessionForUser(username)) {
                 writer.println("Invalid/Non-Existent Session");
                 throw new RemoteException("Invalid/Non-Existent Session");
@@ -70,6 +65,12 @@ public class PrintServer extends UnicastRemoteObject implements IPrintServer {
 
         return sessionToken;
     }
+
+    @Override
+    public void logout(String username) throws RemoteException {
+        System.out.println(username + " is logging out.");
+    }
+
     public boolean checkSession(String username) throws RemoteException{
         return session.checkSessionForUser(username);
     }
