@@ -4,6 +4,7 @@ import accessControl.RoleBasedAccessControl;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,8 +29,13 @@ public class RBACTest {
         try {
             RoleBasedAccessControl.Policy[] policies = rbac.getPoliciesForUser("Alice");
             RoleBasedAccessControl.Policy[] expected = new RoleBasedAccessControl.Policy[] {
-                    RoleBasedAccessControl.Policy.PolicyAdmin
+                    RoleBasedAccessControl.Policy.PolicyAdmin,
+                    RoleBasedAccessControl.Policy.PolicyPowerUser,
+                    RoleBasedAccessControl.Policy.PolicyTechnician,
+                    RoleBasedAccessControl.Policy.PolicyUser
             };
+            Arrays.sort(policies);
+            Arrays.sort(expected);
             assertArrayEquals(policies, expected);
         } catch (Exception e) {}
     }
@@ -84,9 +90,6 @@ public class RBACTest {
             ArrayList<String> expected = new ArrayList<>();
             expected.add("topQueue");
             expected.add("restart");
-            // can also do normal user stuff
-            expected.add("print");
-            expected.add("queue");
 
             assertTrue(expected.size() == roles.size()
                     && expected.containsAll(roles)
@@ -94,30 +97,6 @@ public class RBACTest {
         } catch (Exception e) {}
     }
 
-    @Test
-    void get_rulesForAdminPolicy() {
-        try {
-            Set<String> roles = rbac.getRulesForPolicy(RoleBasedAccessControl.Policy.PolicyAdmin);
-            ArrayList<String> expected = new ArrayList<>();
-            // PowerUser stuff
-            expected.add("topQueue");
-            // Technician stuff
-            expected.add("start");
-            expected.add("stop");
-            expected.add("restart");
-            expected.add("status");
-            expected.add("readConfig");
-            expected.add("setConfig");
-            // can also do normal user stuff
-            expected.add("print");
-            expected.add("queue");
-
-            assertTrue(expected.size() == roles.size()
-                    && expected.containsAll(roles)
-                    && roles.containsAll(expected));
-
-        } catch (Exception e) {}
-    }
 
     @Test
     void check_ifUserCanStartServer_expectFalse() {
@@ -139,6 +118,13 @@ public class RBACTest {
     void canAdminUserPrint_expectTrue() {
         try {
             assertTrue(rbac.userHasAccess("Alice", "print"));
+        } catch (Exception e) {}
+    }
+
+    @Test
+    void canAdminUserReadConfig_expectTrue() {
+        try {
+            assertTrue(rbac.userHasAccess("Alice", "readConfig"));
         } catch (Exception e) {}
     }
 

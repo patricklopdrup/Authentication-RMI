@@ -17,20 +17,6 @@ public class RoleBasedAccessControl implements IAccessControl {
         PolicyUser
     }
 
-    private Policy[] getHierarchyForPolicy(Policy policy) {
-        switch (policy) {
-            case PolicyAdmin:
-                return new Policy[] { Policy.PolicyTechnician, Policy.PolicyPowerUser, Policy.PolicyUser };
-            case PolicyTechnician:
-                return null; // cannot print or queue as a normal user can
-            case PolicyPowerUser:
-                return new Policy[] { Policy.PolicyUser };
-            case PolicyUser:
-                return null;
-        }
-        return null;
-    }
-
     @Override
     public boolean userHasAccess(String username, String rule) {
         try {
@@ -57,7 +43,7 @@ public class RoleBasedAccessControl implements IAccessControl {
             }
         }
         if (policies.size() == 0) {
-            return new Policy[] { Policy.PolicyUser };
+            return new Policy[] { getLowestPrivilege() };
         } else {
             return policies.toArray(new Policy[policies.size()]);
         }
@@ -85,30 +71,16 @@ public class RoleBasedAccessControl implements IAccessControl {
 
     public Set<String> getRulesForPolicy(Policy policy) throws IOException, ParseException {
         Set<String> result = new HashSet<String>() {};
-        ArrayList<Policy> allUnderlyingPolicies = getAllUnderlyingPoliciesForPolicy(policy);
         JSONObject json = getJsonObject();
         JSONArray policies = (JSONArray) json.get("policies");
-        for (Policy p : allUnderlyingPolicies) {
-            for (Object pol : policies) {
-                String jsonPolicyName = ((JSONObject)pol).get("name").toString();
-                if (p.toString().equals(jsonPolicyName)) {
-                    JSONArray rules = (JSONArray) ((JSONObject)pol).get("rules");
-                    for (Object rule : rules) {
-                        result.add(rule.toString());
-                    }
+        for (Object pol : policies) {
+            String jsonPolicyName = ((JSONObject)pol).get("name").toString();
+            if (policy.toString().equals(jsonPolicyName)) {
+                JSONArray rules = (JSONArray) ((JSONObject)pol).get("rules");
+                for (Object rule : rules) {
+                    result.add(rule.toString());
                 }
             }
-        }
-
-        return result;
-    }
-
-    private ArrayList<Policy> getAllUnderlyingPoliciesForPolicy(Policy policy) {
-        ArrayList<Policy> result = new ArrayList<>();
-        result.add(policy);
-        Policy[] curUnderLyingPolicies = getHierarchyForPolicy(policy);
-        if (curUnderLyingPolicies != null) {
-            result.addAll(Arrays.asList(curUnderLyingPolicies));
         }
 
         return result;

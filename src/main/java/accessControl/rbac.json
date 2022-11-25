@@ -3,7 +3,7 @@
     {
       "name": "Manager",
       "members": [ "Alice" ],
-      "policies": ["PolicyAdmin"]
+      "policies": ["PolicyAdmin", "PolicyTechnician", "PolicyPowerUser", "PolicyUser"]
     },
     {
       "name": "Technician",
@@ -13,7 +13,7 @@
     {
       "name": "PowerUser",
       "members": [ "Cecilia" ],
-      "policies": ["PolicyPowerUser"]
+      "policies": ["PolicyPowerUser", "PolicyUser"]
     },
     {
       "name": "User",
